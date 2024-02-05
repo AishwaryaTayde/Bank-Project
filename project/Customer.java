@@ -1,7 +1,9 @@
 package com.tech.project;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 import lombok.Data;
 
@@ -14,9 +16,11 @@ public class Customer {
 	private long MobNo;
 	private String Address;
 	private long Pincode;
-	private double DepositMoney;
+	
 	private int Password;
 	
+	@OneToOne
+	private Transaction_History transaction_history;
 	
 
 }

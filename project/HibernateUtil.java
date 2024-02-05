@@ -19,7 +19,7 @@ public class HibernateUtil {
 	{
 		Map<String, Object> setting=new HashMap<String, Object>();
 		setting.put(Environment.DRIVER, "com.mysql.jdbc.Driver");
-		setting.put(Environment.URL, "jdbc:mysql://localhost:3306/BankAcc");
+		setting.put(Environment.URL, "jdbc:mysql://localhost:3306/bank");
 		setting.put(Environment.USER, "root");
 		setting.put(Environment.PASS, "root");
 		
@@ -29,9 +29,9 @@ public class HibernateUtil {
 		
 		registry=new StandardServiceRegistryBuilder().applySettings(setting).build();
 		
-		MetadataSources ms=new MetadataSources(registry).addAnnotatedClass(Customer.class);
+		MetadataSources ms=new MetadataSources(registry).addAnnotatedClass(Customer.class).addAnnotatedClass(Transaction_History.class);
 		Metadata md = ms.getMetadataBuilder().build();
-		 sf=md.getSessionFactoryBuilder().build();
+		sf=md.getSessionFactoryBuilder().build();
 		 return sf;
 		
 		
